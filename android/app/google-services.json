@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "932283780000",
+    "firebase_url": "https://test-caller-a9bb3.firebaseio.com",
+    "project_id": "test-caller-a9bb3",
+    "storage_bucket": "test-caller-a9bb3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:932283780000:android:e12d0749c870c3d23272c5",
+        "android_client_info": {
+          "package_name": "com.example.test_caller_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "932283780000-6m4pie9smfblpst22da1fgomrugqdi4j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAp2yIfvV4RSgPRW5DjxW4xh1ljT9HJQAo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "932283780000-6m4pie9smfblpst22da1fgomrugqdi4j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
