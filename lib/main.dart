@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:test_caller_app/patient_screen.dart';
 import 'package:test_caller_app/services.dart';
 
+import 'clip_and_shadow.dart';
 import 'doctor_screen.dart';
+import 'medimate_logo.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,57 +25,156 @@ class MyApp extends StatelessWidget {
   }
 }
 
+List<String> signInOptionsName = [
+  "PATIENT",
+  "DOCTOR",
+];
+
+List<String> signInOptionsIconList = [
+  "assets/images/Name Icon.png",
+  "assets/images/Call a Doctor Icon.png",
+];
+
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Caller App")),
-      body: Container(
-        alignment: Alignment.center,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 18.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              RaisedButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => DoctorScreen()));
-                },
-                color: Colors.blue,
-                elevation: 5,
-                child: Text(
-                  "Doctor",
-                  style: TextStyle(color: Colors.white),
+      //appBar: AppBar(title: Text("Medimate")),
+      body: SafeArea(
+        child: Container(
+          alignment: Alignment.center,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 18.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  padding: EdgeInsets.only(top: 10),
+                  child: Center(
+                    child: MedimateLogo(
+                      width: 300,
+                    ),
+                  ),
                 ),
-              ),
-              SizedBox(height: 20),
-              RaisedButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => PatientScreen()));
-                },
-                color: Colors.green,
-                elevation: 5,
-                child: Text(
-                  "Patient",
-                  style: TextStyle(color: Colors.white),
+                Spacer(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    InkWell(
+                      onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => DoctorScreen())),
+                      child: CustomPaint(
+                        painter: SignInOptionsBoxShadowPainter(),
+                        child: ClipPath(
+                          clipper: SignInOptionsClip(),
+                          child: Container(
+                            color: Colors.white,
+                            padding: EdgeInsets.all(20),
+                            child: Container(
+                              height: 150,
+                              width: 120,
+                              alignment: Alignment.center,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Container(
+                                    height: 80,
+                                    width: 80,
+                                    child: Image(
+                                      image:
+                                          AssetImage(signInOptionsIconList[1]),
+                                      fit: BoxFit.fitWidth,
+                                    ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Container(
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      signInOptionsName[1],
+                                      style: TextStyle(
+                                        color: Colors.blue,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 20),
+                    InkWell(
+                      onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => PatientScreen())),
+                      child: CustomPaint(
+                        painter: SignInOptionsBoxShadowPainter(),
+                        child: ClipPath(
+                          clipper: SignInOptionsClip(),
+                          child: Container(
+                            color: Colors.white,
+                            padding: EdgeInsets.all(20),
+                            child: Container(
+                              height: 150,
+                              width: 120,
+                              alignment: Alignment.center,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Container(
+                                    height: 80,
+                                    width: 80,
+                                    child: Image(
+                                      image:
+                                          AssetImage(signInOptionsIconList[0]),
+                                      fit: BoxFit.fitWidth,
+                                    ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Container(
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      signInOptionsName[0],
+                                      style: TextStyle(
+                                        color: Colors.blue,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              SizedBox(height: 20),
-              RaisedButton(
-                onPressed: () {
-                  database.deleteData();
-                },
-                color: Colors.red,
-                elevation: 5,
-                child: Text(
-                  "RESET",
-                  style: TextStyle(color: Colors.white),
+                Spacer(),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 30.0),
+                  child: RaisedButton(
+                    onPressed: () {
+                      database.deleteData();
+                    },
+                    color: Colors.red,
+                    elevation: 5,
+                    child: Text(
+                      "RESET",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
