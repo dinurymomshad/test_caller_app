@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_caller_app/patient_screen.dart';
+import 'package:test_caller_app/services.dart';
 
 import 'doctor_screen.dart';
 
@@ -57,6 +58,18 @@ class MyHomePage extends StatelessWidget {
                 elevation: 5,
                 child: Text(
                   "Patient",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              SizedBox(height: 20),
+              RaisedButton(
+                onPressed: () {
+                  database.deleteData();
+                },
+                color: Colors.red,
+                elevation: 5,
+                child: Text(
+                  "RESET",
                   style: TextStyle(color: Colors.white),
                 ),
               ),
